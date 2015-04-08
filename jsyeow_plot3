@@ -1,0 +1,31 @@
+#For data processing
+if(!file.exists("exdata-data-household_power_consumption.zip")) {
+  temp <- tempfile()
+  download.file("http://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip",temp)
+  file <- unzip(temp)
+  unlink(temp)
+}
+dataset <- read.table(file, header=T, sep=";")
+dataset$Date <- as.Date(dataset$Date, format="%d/%m/%Y")
+df <- dataset[(dataset$Date=="2007-02-01") | (dataset$Date=="2007-02-02"),]
+GAP <- as.numeric(as.character(df$Global_active_power))
+GRP <- as.numeric(as.character(df$Global_reactive_power))
+df$Voltage <- as.numeric(as.character(df$Voltage))
+df <- transform(df, timestamp=as.POSIXct(paste(Date, Time)), "%d/%m/%Y %H:%M:%S")
+SM1 <- as.numeric(as.character(df$Sub_metering_1))
+SM2 <- as.numeric(as.character(df$Sub_metering_2))
+SM3 <- as.numeric(as.character(df$Sub_metering_3))
+
+
+#To make plot 3
+plot3 <- function() {
+  plot(df$timestamp,SM1, type="l", xlab="", ylab="Energy sub metering")
+  lines(df$timestamp,SM2,col="red")
+  lines(df$timestamp,SM3,col="blue")
+  legend("topright", col=c("black","red","blue"), c("Sub_metering_1  ","Sub_metering_2  ", "Sub_metering_3  "),lty=c(1,1), lwd=c(1,1))
+  dev.copy(png, file="plot3.png", width=480, height=480)
+  dev.off()
+  cat("plot3.png", getwd())
+}
+plot3()
+
