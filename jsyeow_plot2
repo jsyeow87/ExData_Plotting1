@@ -25,4 +25,5 @@ plot2 <- function() {
 }
 plot2()
 
+#see plot 2 in the link below
 https://cloud.githubusercontent.com/assets/10449338/7036876/87c48174-ddcc-11e4-9731-44f69ce7625b.png
