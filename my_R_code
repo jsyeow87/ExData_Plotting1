@@ -25,6 +25,8 @@ plot1 <- function() {
 }
 plot1()
 
+https://cloud.githubusercontent.com/assets/10449338/7036700/1a9d760c-ddca-11e4-8a94-ee58f3a4b390.png
+
 #To make plot 2
 plot2 <- function() {
   plot(df$timestamp,GAP, type="l", xlab="", ylab="Global Active Power (kilowatts)")
