@@ -29,4 +29,5 @@ plot3 <- function() {
 }
 plot3()
 
+#see plot 3 in the link below
 https://cloud.githubusercontent.com/assets/10449338/7036886/b4fd2fe2-ddcc-11e4-8e51-5ec1180d078d.png
