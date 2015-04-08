@@ -42,3 +42,5 @@ plot4 <- function() {
   cat("plot4.png")
 }
 plot4()
+
+https://cloud.githubusercontent.com/assets/10449338/7036899/d61c8f38-ddcc-11e4-83f8-e23ca8b35b1e.png
